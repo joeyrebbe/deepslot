@@ -101,7 +101,7 @@ class SlotMachine  {
     while (count<5) {
       this.slots[count] = shuffle(this.slots[count]);
       count +=1;
-      playButton.textContent = 'Reset';
+      playButton.textContent = 'You are commanded to press the button';
       this.isVictory (this.slots);
     } 
   }     
