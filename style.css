@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+    min-height: 100vh;
+
+}
+
+header {
+    height: 20vh;
+    background-color: rgb(99, 2, 99);
+    color: rgb(21, 105, 4);
+}
+
+.slotDisplay {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
