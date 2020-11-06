@@ -18,6 +18,11 @@ img {
     width: 250px;
 }
 
+#resultDisplay {
+    color: rgb(235, 12, 41);
+    font-style: italic;
+}
+
 
 
 
