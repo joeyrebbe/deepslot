@@ -8,13 +8,13 @@ Click the level and try your luck. 5 in a row may win you a prize, but at what c
 
                     Screenshot: Initial Load Screen
 
-![Alt text](images/Screen Shot 2020-11-05 at 8.09.10 PM.png "Initial Screen")
+![Alt text](images/Screen%20Shot%202020-11-05%20at%208.09.10%20PM.png?raw=true "Initial Screen")
 
 
 
                         Screenshot: Failure Screen
 
-![Alt text](images/Screen Shot 2020-11-05 at 8.09.37 PM.png "Failure Screen")                  
+![Alt text](images/Screen%20Shot%202020-11-05%20at%208.09.37%20PM.png?raw=true "Failure Screen")                  
 
 
 
