@@ -1,4 +1,10 @@
 // Define Constants ====================================
+const slot1 = document.querySelector('#slot1');
+const slot2 = document.querySelector('#slot2');
+const slot3 = document.querySelector('#slot3');
+const slot4 = document.querySelector('#slot4');
+const slot5 = document.querySelector('#slot5');
+
 const gameDisplay = document.querySelector('.gameDisplay');
 const score = document.querySelector('score');
 
@@ -8,17 +14,7 @@ const camera = document.createElement('img')
 const globe = document.createElement('img')
 const flag = document.createElement('img')
 const spy = document.createElement('img')
-const playButton = document.querySelector('button')
-
-
-gameDisplay.appendChild(gun)
-gameDisplay.appendChild(camera)
-gameDisplay.appendChild(globe)
-gameDisplay.appendChild(flag)
-gameDisplay.appendChild(spy)
-
-
-
+const playButton = document.querySelector('.playButton')
 
 
 
@@ -48,8 +44,8 @@ spy.src = './images/spy.png'
 
 init = () => {
   let newMachine = new SlotMachine;
-  playButton.addEventListener('click', newMachine.playTurn());
   newMachine.render ();
+  playButton.addEventListener('click', newMachine.playTurn);
 }
 
 // invoke the main render function to transfer all state var to DOM ===============
@@ -59,26 +55,27 @@ init = () => {
 // user triggers event ================================
 
 const shuffle = (arr) => {
-  let shuffled = arr
-  let currentIndex = arr.length
-  let temporaryValue
-  let randomIndex
-  while (currentIndex !== 0) {
-    randomIndex = Math.floor(Math.random() * currentIndex)
-    currentIndex -= 1
-    temporaryValue = shuffled[currentIndex]
-    shuffled[currentIndex] = shuffled[randomIndex]
-    shuffled[randomIndex] = temporaryValue
+  let shuffled = [];
+  for (let i=0; i<arr.length; i++) {
+    let x = Math.floor(Math.random() * 5)
+    shuffled.push(arr[x])
   }
-  return shuffled
+  return shuffled;
 }
 
 class SlotMachine  {
   constructor(options) {
     this.options = [gun, camera, flag, globe, spy],
-    this.slots = [shuffle(this.options), shuffle(this.options), shuffle(this.options), shuffle(this.options), shuffle(this.options)],
     this.score = 0 
-    // this.prizes = [ttd, panic, phantasm, anarchy, nineteen,] // add audio to these variables
+  }
+
+  appendImgs = (arr) => {
+    console.log(arr);
+    slot1.append(arr[0]);
+    slot2.append(arr[1]);
+    slot3.append(arr[2]);
+    slot4.append(arr[3]);
+    slot5.append(arr[4])
   }
 
   isVictory = (columns) => {
@@ -97,26 +94,26 @@ class SlotMachine  {
 
 
   playTurn = () => {   
-    let count = 0
-    while (count<5) {
-      this.slots[count] = shuffle(this.slots[count]);
-      count +=1;
-      playButton.textContent = 'You are commanded to press the button';
-      this.isVictory (this.slots);
-    } 
+   let shuffledImgs = shuffle(this.options);
+   slot1.innerHTML = '';
+   slot2.innerHTML = '';
+   slot3.innerHTML = '';
+   slot4.innerHTML = '';
+   slot5.innerHTML = '';
+   this.appendImgs(shuffledImgs)
   }     
 
 
   render = () => {
-    let winningImgs = this.options;
-    winningImgs.forEach(option => option.style.color = "white");
-    winningImgs.forEach((img, i) => {
-      img.textContent = img[i];
-    })
-    for (let score in this.score) {
-      this.score.innerText = score
-    }
-    this.isVictory();
+    // let winningImgs = this.options;
+    this.appendImgs(this.options);
+  //   winningImgs.forEach((img, i) => {
+  //     img.textContent = img[i];
+  //   })
+  //   for (let score in this.score) {
+  //     this.score.innerText = score
+  //   }
+  //   this.isVictory(winningImgs);
   }
 }
 
