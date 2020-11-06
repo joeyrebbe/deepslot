@@ -6,7 +6,7 @@ const slot4 = document.querySelector('#slot4');
 const slot5 = document.querySelector('#slot5');
 
 const gameDisplay = document.querySelector('.gameDisplay');
-const score = document.querySelector('score');
+const result = document.getElementbyId('resultDisplay');
 
 
 const gun = document.createElement('img')
@@ -70,12 +70,10 @@ class SlotMachine  {
   }
 
   appendImgs = (arr) => {
-    console.log(arr);
-    slot1.append(arr[0]);
-    slot2.append(arr[1]);
-    slot3.append(arr[2]);
-    slot4.append(arr[3]);
-    slot5.append(arr[4])
+    let slots = [slot1, slot2, slot3, slot4, slot5];
+    slots.forEach((slot, i) => {
+      slot.append(arr[i]);
+    })
   }
 
   isVictory = (columns) => {
@@ -85,10 +83,10 @@ class SlotMachine  {
       }})
       if (score === 5) {
         // return prize(this.options);
-        return "You Have Passed The Test"
+        alert ("You Have Passed The Test");
       }
       else {
-        return "You disappoint your government"
+        alert ("You disappoint your government");
       }
     }
 
@@ -100,20 +98,20 @@ class SlotMachine  {
    slot3.innerHTML = '';
    slot4.innerHTML = '';
    slot5.innerHTML = '';
-   this.appendImgs(shuffledImgs)
+   this.appendImgs(shuffledImgs);
+   this.isVictory(this.options);
   }     
 
 
   render = () => {
-    // let winningImgs = this.options;
+    let winningImgs = this.options;
     this.appendImgs(this.options);
-  //   winningImgs.forEach((img, i) => {
-  //     img.textContent = img[i];
-  //   })
-  //   for (let score in this.score) {
-  //     this.score.innerText = score
-  //   }
-  //   this.isVictory(winningImgs);
+    winningImgs.forEach((img, i) => {
+      img.textContent = img[i];
+    })
+    for (let score in this.score) {
+      this.score.innerText = score
+    }
   }
 }
 
