@@ -11,16 +11,24 @@ header {
 }
 
 .slotDisplay {
-    display: flex;
+   display: flex;
+   justify-content: center;
 }
 
 img {
     width: 250px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 #resultDisplay {
     color: rgb(235, 12, 41);
     font-style: italic;
+}
+
+button {
+    margin-top: 100px;
 }
 
 
